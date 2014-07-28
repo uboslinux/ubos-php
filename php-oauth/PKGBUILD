@@ -6,12 +6,13 @@ maintainer=http://indiebox.net/
 pkgname=$(basename $(pwd))
 _extname=oauth
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="PHP extension to provide OAuth consumer and provider bindings."
 arch=( 'any' )
 url="http://www.php.net/manual/en/intro.oauth.php"
 license=('BSD')
 depends=('php')
+makedepends=('php')
 source=("http://pecl.php.net/get/$_extname-$pkgver.tgz")
 backup=("etc/php/conf.d/$_extname.ini")
 
