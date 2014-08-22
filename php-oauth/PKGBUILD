@@ -1,15 +1,15 @@
-# Based on AUR package php-oauth, adapted for Indie Box
+# Based on AUR package php-oauth, adapted for UBOS
 # Original maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 developer=http://php.net/
-maintainer=http://indiebox.net/
+url="http://www.php.net/manual/en/intro.oauth.php"
+maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
 _extname=oauth
 pkgver=1.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="PHP extension to provide OAuth consumer and provider bindings."
 arch=( 'any' )
-url="http://www.php.net/manual/en/intro.oauth.php"
 license=('BSD')
 depends=('php')
 makedepends=('php')
