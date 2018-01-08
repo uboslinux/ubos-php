@@ -1,4 +1,2 @@
-pkg/
-src/
 oauth-*.tgz
-php-oauth-*.pkg.tar.xz
+php-oauth-*.pkg*
