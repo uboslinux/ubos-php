@@ -1,5 +1,8 @@
-# Based on AUR package php-oauth, adapted for UBOS
 # Original maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
+# Modified for UBOS: Johannes Ernst <jernst@indiecomputing.com>
+# * add releasepage
+# * added pkgverforked
+# * do not install .ini file so UBOS only activates it if needed
 
 developer=http://php.net/
 url="http://www.php.net/manual/en/intro.oauth.php"
@@ -7,7 +10,7 @@ maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
 _extname=oauth
 pkgver=2.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="PHP extension to provide OAuth consumer and provider bindings."
 arch=( 'any' )
 license=("custom:${pkgname}")
@@ -17,6 +20,8 @@ source=("http://pecl.php.net/get/$_extname-$pkgver.tgz")
 releasepage=('http://pecl.php.net/package/oauth')
 backup=("etc/php/conf.d/$_extname.ini")
 sha512sums=('b7aa9459542ec390a5420127d75607702ae6df6254f4e39acb62d35c6a39b8b7990499c279df07ce681081e455b55219c51df42fd516321f317465badf6d459d')
+releasepage=('https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=php-oauth')
+pkgverforked=('2.0.2-1')
 
 build() {
     cd "$srcdir/$_extname-$pkgver"
@@ -31,7 +36,7 @@ package() {
 
     install -m0755 -d "$pkgdir/etc/php/conf.d/"
     install -m0644 -D "LICENSE" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
-    echo "extension=$_extname.so" > "$pkgdir/etc/php/conf.d/$_extname.ini"
-    chmod 0644 "$pkgdir/etc/php/conf.d/$_extname.ini"
+    # echo "extension=$_extname.so" > "$pkgdir/etc/php/conf.d/$_extname.ini"
+    # chmod 0644 "$pkgdir/etc/php/conf.d/$_extname.ini"
     install -m0755 -D ".libs/$_extname.so" "$pkgdir$(php-config --extension-dir)/$_extname.so"
 }
