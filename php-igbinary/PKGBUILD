@@ -5,8 +5,8 @@
 # * do not install .ini file so UBOS only activates it if needed
 pkgname=php-igbinary
 _pkgname=igbinary
-pkgver=2.0.6
-pkgrel=2
+pkgver=2.0.8
+pkgrel=1
 pkgdesc="Igbinary is a drop in replacement for the standard php serializer."
 arch=('any')
 url='https://github.com/igbinary/igbinary'
@@ -15,33 +15,33 @@ depends=(php)
 conflicts=(php-igbinary-git)
 backup=("etc/php/conf.d/igbinary.ini")
 source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('c96ae44baa4290431f1977316f2e78aca44698c07258777584260db19aa6dac2')
+sha512sums=('0161e05b246a3b749213fffafd74265e337fc657ea5e1390507a48865e9434aa3ac7e73bd9d04bfef0d8ceeae222a95cb9490d4705ad2b4607b3eaf2d05962c6')
 releasepage=('https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=php-igbinary')
-pkgverforked=('2.0.6-1')
+pkgverforked=('2.0.8-1')
 
 build() {
-	cd "${_pkgname}-${pkgver}"
+    cd "${_pkgname}-${pkgver}"
 
-	phpize
-	./configure --enable-igbinary
-	make
+    phpize
+    ./configure --enable-igbinary
+    make
 }
 
 check() {
-	cd "${_pkgname}-${pkgver}"
+    cd "${_pkgname}-${pkgver}"
 
-	NO_INTERACTION=1 make test
+    NO_INTERACTION=1 make test
 }
 
 package() {
-	cd "${_pkgname}-${pkgver}"
+    cd "${_pkgname}-${pkgver}"
 
-	make INSTALL_ROOT="$pkgdir" install
-#	install -D -m0644 \
-#		"${srcdir}/${_pkgname}-${pkgver}/igbinary.php.ini" \
-#		"${pkgdir}/etc/php/conf.d/igbinary.ini"
+    make INSTALL_ROOT="$pkgdir" install
+#   install -D -m0644 \
+#       "${srcdir}/${_pkgname}-${pkgver}/igbinary.php.ini" \
+#       "${pkgdir}/etc/php/conf.d/igbinary.ini"
     install -D -m0644 \
-		"${srcdir}/${_pkgname}-${pkgver}/COPYING" \
+        "${srcdir}/${_pkgname}-${pkgver}/COPYING" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
