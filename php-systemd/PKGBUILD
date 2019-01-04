@@ -1,8 +1,9 @@
 # Maintainer: Heine Pedersen <heinep at gmail dot com>
+# Incremented package version to trigger recompile
 
 pkgname=php-systemd
 pkgver=0.1.2
-pkgrel=2
+pkgrel=3
 
 pkgdesc="PHP extension allowing native interaction with systemd and its journal"
 arch=("any")
@@ -11,8 +12,8 @@ license=("MIT")
 makedepends=("php")
 backup=("etc/php/conf.d/systemd.ini")
 
-source=("https://github.com/systemd/php-systemd/archive/release-${pkgver}.zip" 
-        "php7-support.patch" 
+source=("https://github.com/systemd/php-systemd/archive/release-${pkgver}.zip"
+        "php7-support.patch"
         "fix-systemd-include-path.patch"
         "systemd.ini")
 
