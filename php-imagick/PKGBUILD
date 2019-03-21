@@ -5,11 +5,12 @@
 # * sha512 checksum
 
 releasepage=('https://aur.archlinux.org/packages/php-imagick/')
+pkgverforked=('3.4.3-5')
 
 pkgname=php-imagick
 _extname=imagick
 pkgver=3.4.3
-pkgrel=5
+pkgrel=6
 pkgdesc="PHP extension for IMagick"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://pecl.php.net/package/${_extname}"
