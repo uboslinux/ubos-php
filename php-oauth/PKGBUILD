@@ -9,17 +9,16 @@ url="http://www.php.net/manual/en/intro.oauth.php"
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
 _extname=oauth
-pkgver=2.0.3
+pkgver=2.0.4
 pkgrel=1
 pkgdesc="PHP extension to provide OAuth consumer and provider bindings."
 arch=( 'any' )
-license=("custom:${pkgname}")
+license=('BSD')
 depends=('php')
-makedepends=('php')
 source=("http://pecl.php.net/get/$_extname-$pkgver.tgz")
-releasepage=('http://pecl.php.net/package/oauth')
+sha512sums=('269b579f87a9f3f229433c74937f74b9b6df453a6e05f7751ca12fa5f24c9ad62d1ebe5cdb370d33d774a0f2e244c1c685a53226dcb35c0005b5532a00c137d4')
 backup=("etc/php/conf.d/$_extname.ini")
-sha512sums=('3e0ce5ce01533bfd304c0c34465cc184fbd0af1a25f5192860e6394c86dc948688cc8d4b419b48676481cef3a685ba70ac612a8c516da26d0dfe9efdef7e98d9')
+
 releasepage=('https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=php-oauth')
 pkgverforked=('2.0.2-1')
 
