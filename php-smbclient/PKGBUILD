@@ -1,0 +1,41 @@
+# Maintainer: Robin Appelman <robin@icewind.nl>
+# Modified for UBOS: Johannes Ernst <jernst@indiecomputing.com>
+# * better name for downloaded file
+# * use sha512
+# * add releasepage
+# * added pkgverforked
+# * do not install .ini file so UBOS only activates it if needed
+
+pkgname=php-smbclient
+_extname=smbclient
+pkgver=1.0.0
+pkgrel=2
+pkgdesc="PHP bindings for libsmbclient."
+arch=('i686' 'x86_64' 'armv7h')
+url="https://github.com/eduardok/libsmbclient-php"
+license=('BSD')
+depends=('php' 'smbclient')
+# backup=("etc/php/conf.d/${_extname}.ini")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/eduardok/libsmbclient-php/archive/${pkgver}.tar.gz")
+# md5sums=('c28d1d4cab164fb56626da00d7deb7b7')
+sha512sums=('c57e6e834cb39d5759047bffec2567abd3dde3935edab6ab322fb56f48147e855d5e18ca75cc0f0769aff9d1ce1369d8750b441b846c6c90816e1dbceab9f8b5')
+releasepage=('https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=php-smbclient')
+pkgverforked=('1.1.0-2')
+
+build() {
+  cd "libsmbclient-php-${pkgver}"
+
+  phpize
+  ./configure --prefix=/usr
+  make
+}
+
+package() {
+  cd "libsmbclient-php-${pkgver}"
+
+  make INSTALL_ROOT="${pkgdir}" install
+#  echo "extension=smbclient.so" > "${_extname}.ini"
+#  install -D -m644 "${_extname}.ini" "${pkgdir}/etc/php/conf.d/${_extname}.ini"
+}
+
+
