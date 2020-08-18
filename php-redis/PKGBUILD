@@ -6,7 +6,7 @@
 # * do not install .ini file so UBOS only activates it if needed
 
 pkgname=php-redis
-pkgver=4.2.0
+pkgver=4.3.0
 pkgrel=1
 pkgdesc="PHP extension for interfacing with Redis"
 url="http://pecl.php.net/package/redis"
@@ -20,18 +20,15 @@ depends=(
     'php>=7.0.0'
     'php-igbinary'
 )
-conflicts=(
-    'phpredis-git'
-)
 # backup=('etc/php/conf.d/redis.ini')
 releasepage=('https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=php-redis')
-pkgverforked=('4.2.0-1')
+pkgverforked=('4.3.0-1')
 
 source=(
     http://pecl.php.net/get/redis-${pkgver}.tgz
 )
 
-sha256sums=('7655d88addda89814ad2131e093662e1d88a8c010a34d83ece5b9ff45d16b380')
+sha512sums=('30ce5863540485463704e6f90cff3a8d1f5bda34360c987e848ab290c8240f323b6eb2df1e90cc4c0922b3413652132d937488943f5db4e242c460c592da54ca')
 
 build() {
   cd "$srcdir/redis-$pkgver"

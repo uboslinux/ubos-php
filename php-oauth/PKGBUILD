@@ -5,22 +5,22 @@
 # * do not install .ini file so UBOS only activates it if needed
 
 developer=http://php.net/
-url="http://www.php.net/manual/en/intro.oauth.php"
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
 _extname=oauth
-pkgver=2.0.4
+pkgver=2.0.5
 pkgrel=1
 pkgdesc="PHP extension to provide OAuth consumer and provider bindings."
 arch=( 'any' )
+url="http://www.php.net/manual/en/intro.oauth.php"
 license=('BSD')
 depends=('php')
 source=("http://pecl.php.net/get/$_extname-$pkgver.tgz")
-sha512sums=('269b579f87a9f3f229433c74937f74b9b6df453a6e05f7751ca12fa5f24c9ad62d1ebe5cdb370d33d774a0f2e244c1c685a53226dcb35c0005b5532a00c137d4')
+sha512sums=('847f8a07aba930d606038a78915ddd9c24aab241d27b844a766e0da3caabf419fd891573524a55b40559a827b1adc1261748efabac5ed1bee45fa770935379ee')
 backup=("etc/php/conf.d/$_extname.ini")
 
 releasepage=('https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=php-oauth')
-pkgverforked=('2.0.2-1')
+pkgverforked=('2.0.5-1')
 
 build() {
     cd "$srcdir/$_extname-$pkgver"
@@ -32,10 +32,11 @@ build() {
 
 package() {
     cd "$srcdir/$_extname-$pkgver"
+    make INSTALL_ROOT="$pkgdir" install
+
+    install -m0644 -D "LICENSE" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 
     install -m0755 -d "$pkgdir/etc/php/conf.d/"
-    install -m0644 -D "LICENSE" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
     # echo "extension=$_extname.so" > "$pkgdir/etc/php/conf.d/$_extname.ini"
     # chmod 0644 "$pkgdir/etc/php/conf.d/$_extname.ini"
-    install -m0755 -D ".libs/$_extname.so" "$pkgdir$(php-config --extension-dir)/$_extname.so"
 }
