@@ -8,8 +8,8 @@
 
 pkgname=php-smbclient
 _extname=smbclient
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.6
+pkgrel=1
 pkgdesc="PHP bindings for libsmbclient."
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/eduardok/libsmbclient-php"
@@ -18,9 +18,9 @@ depends=('php' 'smbclient')
 # backup=("etc/php/conf.d/${_extname}.ini")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/eduardok/libsmbclient-php/archive/${pkgver}.tar.gz")
 # md5sums=('c28d1d4cab164fb56626da00d7deb7b7')
-sha512sums=('c57e6e834cb39d5759047bffec2567abd3dde3935edab6ab322fb56f48147e855d5e18ca75cc0f0769aff9d1ce1369d8750b441b846c6c90816e1dbceab9f8b5')
+sha512sums=('565590eefa98c4cafca3852fed9f5e24040e571ec02b269e5910f1ebaf83f2f66710ec314ba580ff2c1e09cb88f8f2ec231b139345605ddd7e14da5d1e042f22')
 releasepage=('https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=php-smbclient')
-pkgverforked=('1.1.0-2')
+pkgverforked=('1.0.6-1')
 
 build() {
   cd "libsmbclient-php-${pkgver}"
