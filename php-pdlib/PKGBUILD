@@ -1,5 +1,5 @@
 # Maintainer: Timo Sarawinsi <tino@it-kraut.net>
-
+# Make dependency on blas, not openblas, to avoid conflicts
 releasepage=('https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=php-pdlib')
 
 pkgname=("php-pdlib")
@@ -13,7 +13,7 @@ license=('MIT License')
 depends=('dlib'
          'php'
          'libx11'
-         'openblas'
+         'blas' # change
 	 'cblas'
          'lapack'
 	 'libsm'
