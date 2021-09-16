@@ -1,0 +1,15 @@
+--- systemd.c.old       2014-03-07 21:05:05.000000000 +0100
++++ systemd.c   2021-09-16 17:40:52.233415008 +0200
+@@ -5,8 +5,11 @@
+ #include "php_systemd.h"
+ #include <systemd/sd-journal.h>
+ 
++ZEND_BEGIN_ARG_INFO_EX(arginfo_void, 0, 0, 0)
++ZEND_END_ARG_INFO()
++
+ zend_function_entry systemd_functions[] = {
+-    PHP_FE(sd_journal_send, NULL)
++    PHP_FE(sd_journal_send, arginfo_void)
+     {NULL, NULL, NULL} // Sentinel
+ };
+
