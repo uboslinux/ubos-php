@@ -2,6 +2,7 @@
 # Contributor: Marc Straube <email@marcstraube.de>
 # Contributor: Attila Bukor <r1pp3rj4ck [at] w4it [dot] eu>
 # Please report issues at https://github.com/sanduhrs/arch-aur-phpunit
+# Modified for UBOS: Johannes Ernst <jernst@indiecomputing.com>
 
 _pkgname=phpunit
 pkgname=${_pkgname}
@@ -14,7 +15,9 @@ license=("BSD")
 depends=("php>=7.0.0")
 install="${_pkgname}.install"
 source=("https://phar.phpunit.de/phpunit-${pkgver}.phar"
-        "https://raw.githubusercontent.com/sebastianbergmann/phpunit/${pkgver}/LICENSE")
+        # "https://raw.githubusercontent.com/sebastianbergmann/phpunit/${pkgver}/LICENSE")
+        "LICENSE" )
+# Apparenty the copyright year of the license is being updated without incrementing the version number, so we store it locally
 sha512sums=('93745e12bb3b142774441e198ca6546736b5706a74dd44153db9579c86609e8cc241deb8b19e773d2652cb4b36e8aaf91b76b8dd3f596dbc03010d1d249f2489'
             '8e9e4a876a6b08ad44a60599ad23b3fad5b827925121f2daa427c4a682c6dd2b535151f3cf4f866231722bfb09866f1559fc3e82757a4e64405393ef7e0382cc')
 releasepage=('https://github.com/sebastianbergmann/phpunit/tags')
