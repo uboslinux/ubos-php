@@ -1,17 +1,19 @@
 # Contributor: Heine Pedersen <heinep at gmail dot com>
 # Contributor: Thaodan AUR+me@thaodan.de
+# Modified for UBOS: Johannes Ernst <jernst@indiecomputing.com>
 # From AUR
 
 pkgname=php-systemd
 pkgver=0.1.2
-pkgrel=6
+pkgrel=7
 
 pkgdesc="PHP extension allowing native interaction with systemd and its journal"
 arch=("any")
 url="https://github.com/systemd/php-systemd"
 license=("MIT")
 makedepends=("php"
-            "systemd")
+             "systemd"
+             "autoconf")
 depends=("libsystemd")
 backup=("etc/php/conf.d/systemd.ini")
 

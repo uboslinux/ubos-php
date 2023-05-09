@@ -5,7 +5,7 @@
 
 _pkgname=phpunit
 pkgname=${_pkgname}
-pkgver=7.1.5
+pkgver=9.6.7
 pkgrel=1
 pkgdesc="PHPUnit is a programmer-oriented testing framework for PHP."
 url="https://phpunit.de"
@@ -15,8 +15,9 @@ depends=("php>=7.0.0")
 install="${_pkgname}.install"
 source=("https://phar.phpunit.de/phpunit-${pkgver}.phar"
         "https://raw.githubusercontent.com/sebastianbergmann/phpunit/${pkgver}/LICENSE")
-sha512sums=('14eeccd7de5ae2fec74ad80561a044ebb999e5b42e2c06ec75aa165225d1fcc0fef925d235f9c5ab96192a1a4a2c7af0c29cadf18cc92860e57e83284842a4d1'
-            'c7a1c74549b1b81aa9e641fd5875ffa8db86c49c435a0c442d9284dab0aa0fecbd9dc7160de1e00d792124595a870aae359509a82dce6f9d4e00eda106266073')
+sha512sums=('93745e12bb3b142774441e198ca6546736b5706a74dd44153db9579c86609e8cc241deb8b19e773d2652cb4b36e8aaf91b76b8dd3f596dbc03010d1d249f2489'
+            '8e9e4a876a6b08ad44a60599ad23b3fad5b827925121f2daa427c4a682c6dd2b535151f3cf4f866231722bfb09866f1559fc3e82757a4e64405393ef7e0382cc')
+releasepage=('https://github.com/sebastianbergmann/phpunit/tags')
 
 package() {
   install -D -m 644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
