@@ -1,30 +1,44 @@
-# Maintainer: Stefan Auditor <stefan.auditor@erdfisch.de>
+# Maintainer: Max <max@swk-web.com>
+# Contributor: Justin Kromlinger <hashworks@archlinux.org>
+# Contributor: Stefan Auditor <stefan.auditor@erdfisch.de>
 # Contributor: Marc Straube <email@marcstraube.de>
 # Contributor: Attila Bukor <r1pp3rj4ck [at] w4it [dot] eu>
-# Please report issues at https://github.com/sanduhrs/arch-aur-phpunit
+# From AUR
 # Modified for UBOS: Johannes Ernst <jernst@indiecomputing.com>
 
-_pkgname=phpunit
-pkgname=${_pkgname}
-pkgver=9.6.7
+pkgname=phpunit
+pkgver=10.5.5
 pkgrel=1
-pkgdesc="PHPUnit is a programmer-oriented testing framework for PHP."
+pkgdesc="A programmer-oriented testing framework for PHP"
+conflicts=('phpunit-bin')
 url="https://phpunit.de"
 arch=("any")
 license=("BSD")
-depends=("php>=7.0.0")
-install="${_pkgname}.install"
-source=("https://phar.phpunit.de/phpunit-${pkgver}.phar"
-        # "https://raw.githubusercontent.com/sebastianbergmann/phpunit/${pkgver}/LICENSE")
-        "LICENSE" )
-# Apparenty the copyright year of the license is being updated without incrementing the version number, so we store it locally
-sha512sums=('93745e12bb3b142774441e198ca6546736b5706a74dd44153db9579c86609e8cc241deb8b19e773d2652cb4b36e8aaf91b76b8dd3f596dbc03010d1d249f2489'
-            '8e9e4a876a6b08ad44a60599ad23b3fad5b827925121f2daa427c4a682c6dd2b535151f3cf4f866231722bfb09866f1559fc3e82757a4e64405393ef7e0382cc')
-releasepage=('https://github.com/sebastianbergmann/phpunit/tags')
+depends=("php>=8.1.0")
+makedepends=('ant' 'git' 'composer')
+install="${pkgname}.install"
+source=("git+https://github.com/sebastianbergmann/phpunit.git#tag=${pkgver}")
+sha256sums=('SKIP')
+
+prepare() {
+  cd ${pkgname}
+  composer install
+  sed \
+    -e 's/^;extension=iconv$/extension=iconv/' \
+    -e 's/^;phar.readonly = On$/phar.readonly = Off/' \
+    /etc/php/php.ini > /tmp/php.ini
+  export PHPRC=/tmp/php.ini
+}
+
+build() {
+  cd ${pkgname}
+  ant phar
+}
 
 package() {
-  install -D -m 644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-  install -D -m 755 "${srcdir}/${_pkgname}-${pkgver}.phar" "${pkgdir}/usr/share/webapps/bin/${_pkgname}.phar"
-  install -d "${pkgdir}/usr/bin"
-  ln -s "/usr/share/webapps/bin/${_pkgname}.phar" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm 644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm 755 "${srcdir}/${pkgname}/build/artifacts/${pkgname}-${pkgver}.phar" "${pkgdir}/usr/share/webapps/bin/${pkgname}.phar"
+
+  install -dm 755 "${pkgdir}/usr/bin"
+  ln -s "/usr/share/webapps/bin/${pkgname}.phar" "${pkgdir}/usr/bin/${pkgname}"
 }
