@@ -23,8 +23,11 @@ sha256sums=('SKIP')
 prepare() {
   cd ${pkgname}
   composer install
+
+  # Upstream fails if iconv is already enabled, so we hack it in:
+  # Only emit the extension=iconv line if php -m (list of active modules) does not have it
   sed \
-    -e 's/^;extension=iconv$/extension=iconv/' \
+    $( php -m | grep iconv > /dev/null || echo "-e 's/^;extension=iconv$/extension=iconv/'") \
     -e 's/^;phar.readonly = On$/phar.readonly = Off/' \
     /etc/php/php.ini > /tmp/php.ini
   export PHPRC=/tmp/php.ini
