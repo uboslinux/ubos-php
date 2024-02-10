@@ -5,7 +5,7 @@ releasepage=('https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=php-pdlib')
 pkgname=("php-pdlib")
 _pkgbase=("pdlib")
 pkgver=1.1.0
-pkgrel=3
+pkgrel=3.1
 pkgdesc="PDlib - A PHP extension for Dlib"
 arch=('x86_64')
 url="https://github.com/goodspb/pdlib"

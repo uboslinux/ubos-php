@@ -7,7 +7,7 @@
 # Modified for UBOS: Johannes Ernst <jernst@indiecomputing.com>
 
 pkgname=phpunit
-pkgver=10.5.5
+pkgver=11.0.2
 pkgrel=1
 pkgdesc="A programmer-oriented testing framework for PHP"
 conflicts=('phpunit-bin')
